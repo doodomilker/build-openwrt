@@ -22,7 +22,7 @@ jobs:
       target: ${{matrix.target}}
       ip_address: 10.0.0.2
       partsize: 800
-      toolchain: true
+      toolchain: false
       artifact: true
       release: false
 #///////////////////////////////////////////////////////
