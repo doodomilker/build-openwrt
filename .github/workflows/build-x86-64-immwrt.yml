@@ -1,0 +1,17 @@
+name: Build x86-64 immwrt only
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build x86-64 immwrt
+    uses: ./.github/workflows/build-x86-64-openwrt.yml
+    with:
+      source: immwrt
+      target: x86-64
+      ip_address: 10.0.0.2
+      partsize: 800
+      toolchain: false
+      artifact: true
+      release: false
