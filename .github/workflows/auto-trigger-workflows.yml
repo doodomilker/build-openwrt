@@ -23,8 +23,8 @@ jobs:
       ip_address: 10.0.0.2
       partsize: 800
       toolchain: true
-      artifact: false
-      release: true
+      artifact: true
+      release: false
 #///////////////////////////////////////////////////////
   build2:
     name: build armv8 ${{matrix.source}}
