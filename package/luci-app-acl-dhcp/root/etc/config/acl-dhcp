@@ -1,0 +1,10 @@
+config acl-dhcp 'global'
+	option enabled '1'
+	option default_policy 'lan'
+
+# Per-device DHCP options
+# config device
+#     option name 'doodoo'
+#     option mac 'XX:XX:XX:XX:XX:XX'
+#     option policy 'wan'
+#     list dhcp_options '6,114.114.114.114'

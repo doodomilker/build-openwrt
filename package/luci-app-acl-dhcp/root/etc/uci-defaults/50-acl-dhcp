@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Create initial acl-dhcp config if not exists
+[ -f /etc/config/acl-dhcp ] && exit 0
+
+touch /etc/config/acl-dhcp
+uci set acl-dhcp.global=acl-dhcp
+uci commit acl-dhcp
+
+exit 0

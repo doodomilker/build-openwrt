@@ -1,0 +1,30 @@
+#!/bin/sh
+# ACL DHCP exec: apply per-device DHCP options and tags
+
+. /lib/functions.sh
+
+config_load acl-dhcp
+
+apply_device_policy() {
+    local name="$1"
+    local policy="$2"
+    shift 2
+    local opts="$@"
+
+    # Find DHCP section for this device
+    config_get mac "$name" mac
+    [ -z "$mac" ] && return
+
+    # Apply dhcp_option via uci
+    local section="dhcp_${name}"
+    uci set dhcp."$section"="" 2>/dev/null
+    for opt in $opts; do
+        uci add_list dhcp."$section".dhcp_option="$opt"
+    done
+}
+
+config_foreach apply_device_policy device
+
+uci commit dhcp
+
+return 0
